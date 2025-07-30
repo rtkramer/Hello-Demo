@@ -141,6 +141,8 @@ export default function PrimeDemoTabs() {
         </TabPanel>
         
 
+        
+
       </TabView>
     </div>
   );
