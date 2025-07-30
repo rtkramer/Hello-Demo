@@ -1,0 +1,9 @@
+/* This style tag will always override border-radius for buttons using the CSS variable. */
+:root {
+  --border-radius: 8px;
+}
+
+/* Target only buttons and button-related elements - only override border-radius */
+.p-button {
+  border-radius: var(--border-radius);
+}
