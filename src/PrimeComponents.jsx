@@ -14,6 +14,31 @@ import { Password } from 'primereact/password';
 import { Avatar } from 'primereact/avatar';
 import { Badge } from 'primereact/badge';
 
+// Custom BadgeButton component to handle badge positioning
+const BadgeButton = ({ label, icon, badgeValue, badgeSeverity, onClick, className = "" }) => {
+  return (
+    <div className="relative inline-block" style={{ marginRight: '12px', marginTop: '12px' }}>
+      <Button 
+        label={label} 
+        icon={icon} 
+        onClick={onClick} 
+        className={className}
+      />
+      <div 
+        style={{
+          position: 'absolute',
+          top: '-8px',
+          right: '-8px',
+          zIndex: 9999,
+          transform: 'none'
+        }}
+      >
+        <Badge value={badgeValue} severity={badgeSeverity} />
+      </div>
+    </div>
+  );
+};
+
 const PrimeComponents = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
   const [selectedDropdown, setSelectedDropdown] = useState(null);
@@ -172,15 +197,24 @@ const PrimeComponents = () => {
           <div>
             <h3 className="text-lg font-medium mb-4">Badge on Buttons</h3>
             <div className="flex flex-wrap gap-6">
-              <Button label="Notifications" icon="pi pi-bell" className="p-overlay-badge">
-                <Badge value="8" severity="danger" />
-              </Button>
-              <Button label="Messages" icon="pi pi-envelope" className="p-overlay-badge">
-                <Badge value="12" severity="info" />
-              </Button>
-              <Button label="Tasks" icon="pi pi-check-square" className="p-overlay-badge">
-                <Badge value="3" severity="success" />
-              </Button>
+              <BadgeButton 
+                label="Notifications" 
+                icon="pi pi-bell" 
+                badgeValue="8" 
+                badgeSeverity="danger" 
+              />
+              <BadgeButton 
+                label="Messages" 
+                icon="pi pi-envelope" 
+                badgeValue="12" 
+                badgeSeverity="info" 
+              />
+              <BadgeButton 
+                label="Tasks" 
+                icon="pi pi-check-square" 
+                badgeValue="3" 
+                badgeSeverity="success" 
+              />
             </div>
           </div>
           

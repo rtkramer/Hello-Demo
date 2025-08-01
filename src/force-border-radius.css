@@ -7,3 +7,73 @@
 .p-button {
   border-radius: var(--border-radius);
 }
+
+/* ULTIMATE BADGE CLIPPING FIX - Override PrimeReact theme */
+/* Force all containers to allow overflow */
+.p-button,
+.p-button.p-overlay-badge,
+.p-overlay-badge,
+div[class*="flex"][class*="gap"],
+.flex,
+.flex-wrap,
+.gap-6 {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+/* Override PrimeReact's .p-button .p-badge rule with higher specificity */
+.p-button .p-badge,
+.p-button.p-overlay-badge .p-badge,
+.p-overlay-badge .p-badge,
+.relative .p-badge {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  transform: none !important;
+  z-index: 9999 !important;
+  margin-left: 0 !important; /* Override PrimeReact's margin-left */
+  min-width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+  padding: 0 6px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+}
+
+/* Specific positioning for wrapper approach */
+.relative .p-badge {
+  top: -8px !important;
+  right: -8px !important;
+}
+
+/* Ensure all PrimeReact components allow badge overflow */
+.p-component {
+  overflow: visible !important;
+}
+
+/* Additional spacing for button containers */
+.relative {
+  margin-right: 12px !important;
+  margin-top: 12px !important;
+}
+
+/* Force override for any remaining clipping issues */
+* {
+  overflow: visible !important;
+}
+
+/* But allow specific components to maintain their overflow */
+.p-card,
+.p-dialog,
+.p-overlaypanel,
+.p-sidebar,
+.p-toast,
+.p-tooltip {
+  overflow: visible !important;
+}
